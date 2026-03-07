@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sign In</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container1">
+      <div class="container">
+        <img
+          src="{{ url_for('static', filename='Microsoft_logo_(2012).svg.png') }}"
+          alt="Logo"
+        />
+
+        <h1>Sign in</h1>
+        <h5>Use your account</h5>
+
+        <input id="email" type="email" placeholder="Email, phone, or Skype" />
+
+        <input id="password" type="password" placeholder="Password" />
+
+        <p id="error">Please fill in all fields</p>
+
+        <button id="loginBtn">Next</button>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

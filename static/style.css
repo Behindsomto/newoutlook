@@ -1,0 +1,138 @@
+/* 🌍 Global styles */
+body {
+  background-image: url("backgroundd.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* 🧱 Main container positioning */
+.container1 {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* 📦 Form box */
+.container {
+  width: 100%;
+  max-width: 350px;
+  background-color: white;
+  color: black;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 6px;
+}
+
+/* 🔤 Logo */
+.container img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* 🧾 Inputs */
+.container input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 8px 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* 🚨 Error message */
+.container p {
+  font-size: 12px;
+  color: red;
+  margin: -5px 0 0;
+  display: none;
+}
+
+/* 🔘 Button */
+.container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0067b8;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* 💬 Sub-heading */
+.container h5 {
+  display: none;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* 📱 Responsive - Medium screens */
+@media (max-width: 800px) {
+  .container1 {
+    top: 120px;
+  }
+
+  .container {
+    padding: 30px;
+    gap: 12px;
+  }
+
+  .container img {
+    width: 80px;
+  }
+
+  .container h5 {
+    display: block;
+  }
+
+  .container button {
+    font-size: 13px;
+  }
+}
+
+/* 📱 Responsive - Mobile */
+@media (max-width: 500px) {
+  body {
+    background: white;
+  }
+
+  .container1 {
+    top: 20px;
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 90%;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .container input {
+    font-size: 13px;
+  }
+
+  .container h1 {
+    font-size: 20px;
+  }
+
+  .container h5 {
+    font-size: 13px;
+  }
+
+  .container button {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
