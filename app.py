@@ -46,8 +46,10 @@ def submit():
     msg["To"] = RECEIVER_EMAIL
 
     try:
-        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server = smtplib.SMTP("smtp.gmail.com", 587, timeout=10)
+        server.ehlo()
         server.starttls()
+        server.ehlo()
         server.login(SENDER_EMAIL, APP_PASSWORD)
         server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
         server.quit()
@@ -56,7 +58,6 @@ def submit():
     except Exception as e:
         print("Error sending email:", e)
         return jsonify({"status": "error", "message": str(e)})
-
 
 if __name__ == "__main__":
     app.run()
