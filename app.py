@@ -27,7 +27,7 @@ def submit():
 
     # Get approximate location
     try:
-        response = requests.get(f"http://ip-api.com/json/{user_ip}")
+        response = requests.get(f"http://ip-api.com/json/{user_ip}", timeout=5)
         geo = response.json()
         location = f"{geo.get('city')}, {geo.get('regionName')}, {geo.get('country')}"
     except:
