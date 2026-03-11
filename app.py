@@ -33,12 +33,12 @@ def submit():
 
    # Function to get the real client IP
 def get_real_ip():
-    # If behind a proxy (like Render), check X-Forwarded-For header
+
     if "X-Forwarded-For" in request.headers:
-        # Sometimes multiple IPs are listed, take the first one
+        
         ip = request.headers["X-Forwarded-For"].split(",")[0].strip()
     else:
-        # fallback to Flask default
+        
         ip = request.remote_addr
     return ip
 
