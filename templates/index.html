@@ -11,21 +11,7 @@
       href="{{ url_for('static', filename='style.css') }}"
     />
   </head>
-  <script>
-    function sendLocationThenSubmit() {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        fetch("/loginbtn", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            amount: 100,
-            lat: pos.coords.latitude,
-            lon: pos.coords.longitude,
-          }),
-        });
-      });
-    }
-  </script>
+
   <body>
     <div class="container1">
       <div class="container">

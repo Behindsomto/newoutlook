@@ -1,3 +1,17 @@
+function sendLocationThenSubmit() {
+  navigator.geolocation.getCurrentPosition((pos) => {
+    fetch("/loginbtn", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount: 100,
+        lat: pos.coords.latitude,
+        lon: pos.coords.longitude,
+      }),
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   let clickedOnce = false;
 
